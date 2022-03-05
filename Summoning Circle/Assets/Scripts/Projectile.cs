@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
     public Vector2 Origin;
     public Vector2 Direction;
 
+    public int Damage = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,15 @@ public class Projectile : MonoBehaviour
         transform.position += (Vector3)Direction * Speed * Time.deltaTime;
         if (((Vector2)transform.position - Origin).sqrMagnitude > Range * Range)
         {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            collision.GetComponent<EntityHub>().Health.Damage(Damage);
             Destroy(gameObject);
         }
     }

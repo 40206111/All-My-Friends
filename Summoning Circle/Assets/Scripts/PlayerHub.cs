@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class PlayerHub : EntityHub
 {
-    public ushort FrozenMovement = 0;
-
-    public EntityMover Mover;
-    public EntityProjCaster Caster;
-    public PlayerBrain Brain;
 
     public Transform Projectile;
 
@@ -25,13 +20,5 @@ public class PlayerHub : EntityHub
         Caster.Hub = this;
 
         Brain.Hub = this;
-    }
-
-    // Update is called once per frame
-    protected override void Update()
-    {
-        Brain.BrainUpdate();
-        Mover.MoveUpdate();
-        Caster.CastUpdate();
     }
 }

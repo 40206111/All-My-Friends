@@ -8,7 +8,7 @@ public class EntityMover
     public enum eMovementType { none = -1, direction, goal }
 
     public Rigidbody2D Body;
-    public PlayerHub Hub;
+    public EntityHub Hub;
 
     public float Speed = 5.0f;
     public float Accel = 25.0f;
