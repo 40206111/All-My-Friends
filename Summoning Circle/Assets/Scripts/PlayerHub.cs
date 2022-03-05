@@ -10,6 +10,7 @@ public class PlayerHub : EntityHub
     public EntityProjCaster Caster;
     public PlayerBrain Brain;
 
+    public Transform Projectile;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -21,6 +22,8 @@ public class PlayerHub : EntityHub
         Mover.Body = GetComponent<Rigidbody2D>();
         Mover.Hub = this;
 
+        Caster.Hub = this;
+
         Brain.Hub = this;
     }
 
@@ -29,5 +32,6 @@ public class PlayerHub : EntityHub
     {
         Brain.BrainUpdate();
         Mover.MoveUpdate();
+        Caster.CastUpdate();
     }
 }

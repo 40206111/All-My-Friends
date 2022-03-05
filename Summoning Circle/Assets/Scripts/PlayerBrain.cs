@@ -19,5 +19,13 @@ public class PlayerBrain : EntityBrain
         (Hub as PlayerHub).Mover.MoveVector = moveDir;
 
         // ---- Firing ----
+        Vector2 castDir = Vector2.zero;
+        castDir.x = Input.GetAxisRaw("HorizontalFire");
+        castDir.y = Input.GetAxisRaw("VerticalFire");
+        if (castDir.sqrMagnitude > 1)
+        {
+            castDir = castDir.normalized;
+        }
+        (Hub as PlayerHub).Caster.CastDirection = castDir.normalized;
     }
 }
