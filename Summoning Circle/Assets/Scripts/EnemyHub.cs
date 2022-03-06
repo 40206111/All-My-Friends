@@ -26,7 +26,9 @@ public class EnemyHub : EntityHub
     {
         if (collision.collider.CompareTag("Player"))
         {
-            collision.collider.GetComponent<PlayerHub>().Health.Damage(1);
+            PlayerHub phub = collision.collider.GetComponent<PlayerHub>();
+                phub.Health.Damage(1);
+            phub.Mover.Knockback(((Vector2)(phub.transform.position - transform.position)).normalized * 4.0f);
         }
     }
 }

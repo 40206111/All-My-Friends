@@ -25,8 +25,7 @@ public class EntityProjCaster
                 float angle = Vector2.Angle(CastDirection, Vector2.up);
                 float sign = Mathf.Sign(Vector2.Dot(CastDirection, Vector2.left));
 
-                angle /= 360f;
-                angle *= 8f;
+                angle /= 45f;
                 angle = Mathf.Round(angle);
                 angle *= 45f;
 
