@@ -30,9 +30,19 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        bool destroy = false;
         if (collision.CompareTag("Enemy"))
         {
             collision.GetComponent<EntityHub>().Health.Damage(Damage);
+            destroy = true;
+        }
+        else if (collision.CompareTag("Solid"))
+        {
+            destroy = true;
+        }
+
+        if (destroy)
+        {
             Destroy(gameObject);
         }
     }
