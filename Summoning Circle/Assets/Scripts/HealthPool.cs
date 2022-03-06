@@ -9,7 +9,7 @@ public abstract class HealthPool
     public int MaxHealth = 1;
     public int CurrentHealth = 1;
 
-    public void Damage(int val)
+    public virtual void Damage(int val)
     {
         CurrentHealth -= val;
         if(CurrentHealth <= 0)
@@ -17,7 +17,7 @@ public abstract class HealthPool
             Die();
         }
     }
-    public void Heal(int val)
+    public virtual void Heal(int val)
     {
         CurrentHealth += val;
         if (CurrentHealth > MaxHealth)
