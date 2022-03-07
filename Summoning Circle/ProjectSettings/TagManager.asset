@@ -55,6 +55,9 @@ TagManager:
   - name: Wall Detail
     uniqueID: 2691204899
     locked: 0
+  - name: On Floor Stuff
+    uniqueID: 1856401999
+    locked: 0
   - name: Entity
     uniqueID: 2613984507
     locked: 0
