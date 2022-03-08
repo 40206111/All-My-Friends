@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AllItems:
-  - {fileID: 0}
+  - {fileID: 854616919718799474, guid: 5ca38dfb23a832a499cd567a947c524f, type: 3}
   - {fileID: 854616919718799474, guid: 3ca8ae5cc8a8cf74a9213c033599f83c, type: 3}
   Goblins: []

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AllItemData : MonoBehaviour
 {
-    readonly IItemDataService ItemDataService;
+    IItemDataService ItemDataService;
 
     public static AllItemData Instance { get; private set; }
 
@@ -18,6 +18,7 @@ public class AllItemData : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            ItemDataService = new ItemDataService();
         }
         else
         {
