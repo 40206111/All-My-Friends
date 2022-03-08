@@ -13,6 +13,9 @@ public class AllItemData : MonoBehaviour
     [HideInInspector]
     public List<Item> Goblins;
 
+    [HideInInspector]
+    public List<Item> ChallengeItems;
+
     private void Awake()
     {
         if (Instance == null)
@@ -35,6 +38,9 @@ public class AllItemData : MonoBehaviour
     {
         Goblins = ItemDataService.AllUnlockedItemsFromPool(eItemPools.Goblin);
         Debug.Log($"Loaded {Goblins.Count} Goblins from {AllItems.Count} Items");
+
+        ChallengeItems = ItemDataService.AllChallengeRoomItems();
+        Debug.Log($"Loaded {ChallengeItems.Count} Challenge Items from {AllItems.Count} Items");
     }
 
 }

@@ -22,4 +22,17 @@ public class ItemDataService : IItemDataService
         return items.ToList();
     }
 
+    public List<Item> AllChallengeRoomItems()
+    {
+        int playerUnlocksInt = PlayerPrefs.GetInt("Unlocks");
+        eUnlockCriteria unlocks = (eUnlockCriteria)playerUnlocksInt;
+        var allItems = AllItemsFromPool(eItemPools.Challenge);
+        var lockedChallenges = allItems.Where(item => !unlocks.HasFlag(item.UnlockCriteria)).Select(item => item);
+        if (lockedChallenges.Count() == 0)
+        {
+            return allItems.ToList();
+        }
+        return lockedChallenges.ToList();
+    }
+
 }

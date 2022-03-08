@@ -7,5 +7,5 @@ public interface IItemDataService
     List<Item> AllUnlockedItemsFromPool(eItemPools pool);
     IEnumerable<Item> AllItemsFromPool(eItemPools pool);
 
-
+    public List<Item> AllChallengeRoomItems();
 }

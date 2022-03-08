@@ -12,7 +12,7 @@ public enum eUnlockCriteria
 public enum eTags
 {
     None,
-    Goblin,
+    Goblin = 1 << 0,
 }
 
 
@@ -20,7 +20,8 @@ public enum eTags
 public enum eItemPools
 {
     None,
-    Goblin,
+    Goblin = 1 << 0,
+    Challenge = 1 << 1
 }
 
 public class Item : MonoBehaviour

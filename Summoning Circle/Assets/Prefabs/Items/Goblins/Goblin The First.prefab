@@ -130,5 +130,5 @@ MonoBehaviour:
   TagLine: A Friend
   Tags: -1
   UnlockCriteria: 0
-  ItemPools: -1
+  ItemPools: 1
   PedastalIcon: {fileID: 21300000, guid: eaa8cd3c2ee8284458de359ca52f0856, type: 3}
