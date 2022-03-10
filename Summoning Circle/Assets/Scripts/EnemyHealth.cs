@@ -9,9 +9,4 @@ public class EnemyHealth : HealthPool
         MaxHealth = 50;
         CurrentHealth = 50;
     }
-
-    public override void Die()
-    {
-        Object.Destroy(Hub.gameObject);
-    }
 }

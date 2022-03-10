@@ -7,15 +7,12 @@ public class EnemyHub : EntityHub
     protected override void Start()
     {
         Mover = new EntityMover();
-        Caster = new EntityProjCaster();
         Brain = new EnemyBrain();
         Health = new EnemyHealth();
 
         Mover.Body = GetComponent<Rigidbody2D>();
         Mover.Hub = this;
         Mover.Speed /= 3f;
-
-        Caster.Hub = this;
 
         Brain.Hub = this;
 

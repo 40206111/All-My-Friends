@@ -26,5 +26,10 @@ public abstract class HealthPool
         }
     }
 
-    public abstract void Die();
+    public virtual void HealthUpdate() { }
+
+    public virtual void Die()
+    {
+        Hub.Die();
+    }
 }

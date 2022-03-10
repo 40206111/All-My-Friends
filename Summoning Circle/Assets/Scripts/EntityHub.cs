@@ -14,25 +14,31 @@ public class EntityHub : MonoBehaviour
     protected virtual void Start()
     {
         Mover = new EntityMover();
-        Caster = new EntityProjCaster();
         Brain = new EntityBrain();
-        Health = new EnemyHealth();
 
         Mover.Body = GetComponent<Rigidbody2D>();
         Mover.Hub = this;
 
-        Caster.Hub = this;
-
         Brain.Hub = this;
-
-        Health.Hub = this;
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
-        Brain.BrainUpdate();
-        Mover.MoveUpdate();
-        Caster.CastUpdate();
+        Brain?.BrainUpdate();
+        Mover?.MoveUpdate();
+        Caster?.CastUpdate();
+        Health?.HealthUpdate();
+    }
+
+    public virtual void Die()
+    {
+        StartCoroutine(DieCoroutine());
+    }
+
+    protected virtual IEnumerator DieCoroutine()
+    {
+        yield return null;
+        Destroy(gameObject);
     }
 }

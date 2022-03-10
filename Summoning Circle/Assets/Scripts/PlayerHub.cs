@@ -26,10 +26,4 @@ public class PlayerHub : EntityHub
         Health.MaxHealth = 6;
         Health.CurrentHealth = 6;
     }
-
-    protected override void Update()
-    {
-        base.Update();
-        ((PlayerHealth)Health).HealthUpdate();
-    }
 }

@@ -11,21 +11,16 @@ public class PlayerHealth : HealthPool
     {
         if (IFrameRemaining <= 0f)
         {
-            base.Damage(val);
+            base.Damage(1);
             IFrameRemaining = DamageIFrames;
         }
     }
 
-    public void HealthUpdate()
+    public override void HealthUpdate()
     {
         if (IFrameRemaining > 0f)
         {
             IFrameRemaining -= Time.deltaTime;
         }
-    }
-
-    public override void Die()
-    {
-        Object.Destroy(Hub.gameObject);
     }
 }
