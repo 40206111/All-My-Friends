@@ -1,0 +1,16 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[System.Flags]
+public enum eFaction { none = 0, neutral = 1<<0, player = 1 << 1, enemy = 1 << 2 }
+
+public enum eEntityState { none = -1, spawning, living, dieing }
+
+[System.Flags]
+public enum eEntityActions { none = 0, idle = 1 << 0, moving = 1 << 1, attacking = 1 << 2 }
+
+public static class GameInfo
+{
+
+}

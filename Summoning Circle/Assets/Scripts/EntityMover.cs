@@ -18,6 +18,7 @@ public class EntityMover
     public EntityMover(EntityHub hub)
     {
         Hub = hub;
+        Body = Hub.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame

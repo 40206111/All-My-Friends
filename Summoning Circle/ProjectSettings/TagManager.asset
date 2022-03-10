@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Solid
+  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - Wall
   - Entity
   - Bouncer
-  - 
-  - 
+  - Projectile
+  - Orbit
   - 
   - 
   - 

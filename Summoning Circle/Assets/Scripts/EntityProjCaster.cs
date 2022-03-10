@@ -8,12 +8,14 @@ public class EntityProjCaster
 
     public EntityHub Hub;
 
-    public float CastCDTime = 0.5f;
     public float CastCDRemaining = 0.0f;
+
+    public ProjectileData Data;
 
     public EntityProjCaster(EntityHub hub)
     {
         Hub = hub;
+        Data = new ProjectileData(1, 1, 1, 1, eFaction.neutral, eFaction.neutral);
     }
 
     public virtual void CastUpdate()
@@ -36,10 +38,11 @@ public class EntityProjCaster
 
                 Vector2 castDir = Quaternion.Euler(0, 0, angle * sign) * Vector2.up;
 
-                Projectile p = Object.Instantiate((Hub as PlayerHub).Projectile, Hub.transform.position + (Vector3)castDir, Quaternion.identity).GetComponent<Projectile>();
-                p.Direction = castDir.normalized;
+                Projectile p = Object.Instantiate(Hub.Projectile).GetComponent<Projectile>();
 
-                CastCDRemaining = CastCDTime;
+                p.Initialise(Hub.transform.position + (Vector3)castDir, castDir.normalized, Data);
+
+                CastCDRemaining = 1.0f / Data.ShotsPerSecond;
             }
         }
         else

@@ -7,10 +7,15 @@ public class EntityHub : MonoBehaviour
 {
     public ushort FrozenMovement = 0;
 
+    public eFaction Faction;
+
+    public Transform Projectile;
+
     public EntityMover Mover;
     public EntityProjCaster Caster;
     public EntityBrain Brain;
     public HealthPool Health;
+    public ProjectileBlocker PBlocker;
 
     public Action<Collision2D> OnCollisionEnter;
     public Action<Collision2D> OnCollisionExit;
@@ -20,10 +25,14 @@ public class EntityHub : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
+        Faction = eFaction.neutral;
+
         Mover = new EntityMover(this);
         Brain = new EntityBrain(this);
+        Caster = new EntityProjCaster(this);
 
-        Mover.Body = GetComponent<Rigidbody2D>();
+        Caster.Data.TargetFaction = eFaction.player;
+        Caster.Data.SourceFaction = eFaction.enemy;
     }
 
     // Update is called once per frame

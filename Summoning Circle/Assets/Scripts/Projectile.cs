@@ -4,25 +4,34 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float Range = 5f;
-    public float Speed = 7f;
+    public ProjectileData Data;
 
     public Vector2 Origin;
     public Vector2 Direction;
 
-    public int Damage = 10;
+    public bool IsInitialised = false;
 
-    // Start is called before the first frame update
-    void Start()
+    public void Initialise(Vector2 origin, Vector2 dir, ProjectileData data)
     {
-        Origin = transform.position;
+
+        Origin = origin;
+        Direction = dir;
+
+        Data = data;
+
+        transform.position = origin;
+        IsInitialised = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += (Vector3)Direction * Speed * Time.deltaTime;
-        if (((Vector2)transform.position - Origin).sqrMagnitude > Range * Range)
+        if (!IsInitialised)
+        {
+            return;
+        }
+        transform.position += (Vector3)Direction * Data.Speed * Time.deltaTime;
+        if (((Vector2)transform.position - Origin).sqrMagnitude > Data.Range * Data.Range)
         {
             Destroy(gameObject);
         }
@@ -31,19 +40,34 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         bool destroy = false;
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag("Solid"))
         {
-            collision.GetComponent<EntityHub>().Health.Damage(Damage);
             destroy = true;
         }
-        else if (collision.CompareTag("Solid"))
+        else
         {
-            destroy = true;
+            EntityHub hub = collision.GetComponent<EntityHub>();
+            if (hub.Health != null && (hub.Faction & Data.TargetFaction) != eFaction.none)
+            { 
+                hub.Health.Damage(Data.Damage);
+                destroy = true;
+            }
         }
 
         if (destroy)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    public void Die()
+    {
+        StartCoroutine(DieCoroutine());
+    }
+
+    private IEnumerator DieCoroutine()
+    {
+        yield return null;
+        Destroy(gameObject);
     }
 }

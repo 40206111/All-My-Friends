@@ -27,6 +27,10 @@ public class EnemyBrain : EntityBrain
             Target = Player.transform.position;
         }
 
-        Hub.Mover.MoveVector = (Target - (Vector2)Hub.transform.position).normalized;
+        Vector2 toPlayer = (Target - (Vector2)Hub.transform.position).normalized;
+
+        Hub.Mover.MoveVector = toPlayer;
+
+        Hub.Caster.CastDirection = toPlayer;
     }
 }
