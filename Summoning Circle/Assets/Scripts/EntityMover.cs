@@ -15,6 +15,10 @@ public class EntityMover
 
     public Vector2 MoveVector = Vector2.zero;
 
+    public EntityMover(EntityHub hub)
+    {
+        Hub = hub;
+    }
 
     // Update is called once per frame
     public void MoveUpdate()

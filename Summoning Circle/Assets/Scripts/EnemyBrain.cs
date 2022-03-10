@@ -9,6 +9,7 @@ public class EnemyBrain : EntityBrain
 
     public bool TargetIsPlayer = true;
 
+    public EnemyBrain(EntityHub hub) : base(hub) { }
 
     public override void BrainUpdate()
     {

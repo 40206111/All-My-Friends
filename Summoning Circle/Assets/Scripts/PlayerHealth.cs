@@ -7,6 +7,8 @@ public class PlayerHealth : HealthPool
     public float DamageIFrames = 0.5f;
     public float IFrameRemaining = 0f;
 
+    public PlayerHealth(EntityHub hub) : base(hub) { }
+
     public override void Damage(int val)
     {
         if (IFrameRemaining <= 0f)

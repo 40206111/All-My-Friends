@@ -11,6 +11,11 @@ public class EntityProjCaster
     public float CastCDTime = 0.5f;
     public float CastCDRemaining = 0.0f;
 
+    public EntityProjCaster(EntityHub hub)
+    {
+        Hub = hub;
+    }
+
     public virtual void CastUpdate()
     {
         if (CastCDRemaining <= 0f)

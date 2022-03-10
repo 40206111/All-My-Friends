@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerBrain : EntityBrain
 {
+    public PlayerBrain(EntityHub hub) : base(hub) { }
 
     public override void BrainUpdate()
     {

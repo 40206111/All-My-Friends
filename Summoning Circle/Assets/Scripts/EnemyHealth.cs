@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : HealthPool
 {
-    public EnemyHealth()
+    public EnemyHealth(EntityHub hub) : base(hub)
     {
         MaxHealth = 50;
         CurrentHealth = 50;

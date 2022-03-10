@@ -13,6 +13,22 @@ public class BounceBrain : EntityBrain
 
     protected List<HealthPool> Overlaps = new List<HealthPool>();
 
+    public BounceBrain(EntityHub hub) : base(hub)
+    {
+        Hub.OnCollisionEnter += OnCollisionEnter2D;
+        Hub.OnCollisionExit += OnCollisionExit2D;
+        Hub.OnTriggerEnter += OnTriggerEnter2D;
+        Hub.OnTriggerExit += OnTriggerExit2D;
+    }
+
+    ~BounceBrain()
+    {
+        Hub.OnCollisionEnter -= OnCollisionEnter2D;
+        Hub.OnCollisionExit -= OnCollisionExit2D;
+        Hub.OnTriggerEnter -= OnTriggerEnter2D;
+        Hub.OnTriggerExit -= OnTriggerExit2D;
+    }
+
     public override void BrainUpdate()
     {
         Hub.Mover.MoveVector = TravelDir;
@@ -33,10 +49,10 @@ public class BounceBrain : EntityBrain
         }
 
         TickTime += Time.deltaTime;
-        if(TickTime > TickActivationTime)
+        if (TickTime > TickActivationTime)
         {
             TickTime -= TickActivationTime;
-            foreach(HealthPool pool in Overlaps)
+            foreach (HealthPool pool in Overlaps)
             {
                 pool.Damage(Damage);
             }
@@ -110,7 +126,7 @@ public class BounceBrain : EntityBrain
     public void OnTriggerEnter2D(Collider2D collision)
     {
         EntityHub hub = collision.GetComponent<EntityHub>();
-        if(hub != null && hub.Health != null)
+        if (hub != null && hub.Health != null)
         {
             if (!Overlaps.Contains(hub.Health))
             {

@@ -6,21 +6,17 @@ public class EnemyHub : EntityHub
 {
     protected override void Start()
     {
-        Mover = new EntityMover();
-        Brain = new EnemyBrain();
-        Health = new EnemyHealth();
+        Mover = new EntityMover(this);
+        Brain = new EnemyBrain(this);
+        Health = new EnemyHealth(this);
 
         Mover.Body = GetComponent<Rigidbody2D>();
-        Mover.Hub = this;
         Mover.Speed /= 3f;
-
-        Brain.Hub = this;
-
-        Health.Hub = this;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnCollisionEnter2D(Collision2D collision)
     {
+        base.OnCollisionEnter2D(collision);
         if (collision.collider.CompareTag("Player"))
         {
             PlayerHub phub = collision.collider.GetComponent<PlayerHub>();

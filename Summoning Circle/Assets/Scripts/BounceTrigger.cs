@@ -22,7 +22,7 @@ public class BounceTrigger : MonoBehaviour
         {
             return;
         }
-        ((BounceBrain)Hub.Brain).OnTriggerEnter2D(collision);
+        Hub.OnTriggerEnter?.Invoke(collision);
     }
 
     protected void OnTriggerExit2D(Collider2D collision)
@@ -31,6 +31,6 @@ public class BounceTrigger : MonoBehaviour
         {
             return;
         }
-        ((BounceBrain)Hub.Brain).OnTriggerExit2D(collision);
+        Hub.OnTriggerExit?.Invoke(collision);
     }
 }

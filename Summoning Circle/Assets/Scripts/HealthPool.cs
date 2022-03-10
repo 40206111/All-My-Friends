@@ -9,6 +9,11 @@ public abstract class HealthPool
     public int MaxHealth = 1;
     public int CurrentHealth = 1;
 
+    public HealthPool(EntityHub hub)
+    {
+        Hub = hub;
+    }
+
     public virtual void Damage(int val)
     {
         CurrentHealth -= val;

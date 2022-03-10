@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EntityHub : MonoBehaviour
 {
@@ -10,16 +11,19 @@ public class EntityHub : MonoBehaviour
     public EntityProjCaster Caster;
     public EntityBrain Brain;
     public HealthPool Health;
+
+    public Action<Collision2D> OnCollisionEnter;
+    public Action<Collision2D> OnCollisionExit;
+    public Action<Collider2D> OnTriggerEnter;
+    public Action<Collider2D> OnTriggerExit;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        Mover = new EntityMover();
-        Brain = new EntityBrain();
+        Mover = new EntityMover(this);
+        Brain = new EntityBrain(this);
 
         Mover.Body = GetComponent<Rigidbody2D>();
-        Mover.Hub = this;
-
-        Brain.Hub = this;
     }
 
     // Update is called once per frame
@@ -40,5 +44,24 @@ public class EntityHub : MonoBehaviour
     {
         yield return null;
         Destroy(gameObject);
+    }
+
+
+
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        OnCollisionEnter?.Invoke(collision);
+    }
+    protected virtual void OnCollisionExit2D(Collision2D collision)
+    {
+        OnCollisionExit?.Invoke(collision);
+    }
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    {
+        OnTriggerEnter?.Invoke(collision);
+    }
+    protected virtual void OnTriggerExit2D(Collider2D collision)
+    {
+        OnTriggerExit?.Invoke(collision);
     }
 }
