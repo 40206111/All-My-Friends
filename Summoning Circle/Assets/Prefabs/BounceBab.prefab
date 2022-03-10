@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 5094564856243247640}
   - component: {fileID: 5094564856243247641}
   m_Layer: 9
-  m_Name: Circle
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,7 +141,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!1 &5094564856712898164
 GameObject:
   m_ObjectHideFlags: 0
