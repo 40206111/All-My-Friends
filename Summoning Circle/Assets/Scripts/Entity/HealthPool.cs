@@ -17,7 +17,8 @@ public abstract class HealthPool
     public virtual void Damage(int val)
     {
         CurrentHealth -= val;
-        if(CurrentHealth <= 0)
+        CallAnimateDamage();
+        if (CurrentHealth <= 0)
         {
             Die();
         }
@@ -29,6 +30,10 @@ public abstract class HealthPool
         {
             CurrentHealth = MaxHealth;
         }
+    }
+    protected virtual void CallAnimateDamage()
+    {
+        Hub.GetComponentInChildren<AnimateDamage>()?.DisplayDamaged(0.2f);
     }
 
     public virtual void HealthUpdate() { }

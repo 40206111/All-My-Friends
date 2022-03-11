@@ -15,7 +15,13 @@ public class PlayerHealth : HealthPool
         {
             base.Damage(1);
             IFrameRemaining = DamageIFrames;
+
         }
+    }
+
+    protected override void CallAnimateDamage()
+    {
+        Hub.GetComponentInChildren<AnimateDamage>().DisplayDamaged(DamageIFrames);
     }
 
     public override void HealthUpdate()
