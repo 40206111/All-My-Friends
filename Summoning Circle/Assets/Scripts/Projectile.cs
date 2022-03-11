@@ -47,7 +47,7 @@ public class Projectile : MonoBehaviour
         else
         {
             EntityHub hub = collision.GetComponent<EntityHub>();
-            if (hub.Health != null && (hub.Faction & Data.TargetFaction) != eFaction.none)
+            if (hub != null && hub.Health != null && (hub.Faction & Data.TargetFaction) != eFaction.none)
             { 
                 hub.Health.Damage(Data.Damage);
                 destroy = true;

@@ -54,7 +54,10 @@ public class BounceBrain : EntityBrain
             TickTime -= TickActivationTime;
             foreach (HealthPool pool in Overlaps)
             {
-                pool.Damage(Damage);
+                if (pool.Hub.Faction != Hub.Faction)
+                {
+                    pool.Damage(Damage);
+                }
             }
         }
     }
