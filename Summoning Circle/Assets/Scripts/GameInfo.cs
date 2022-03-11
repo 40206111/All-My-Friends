@@ -10,7 +10,10 @@ public enum eEntityState { none = -1, spawning, living, dieing }
 [System.Flags]
 public enum eEntityActions { none = 0, idle = 1 << 0, moving = 1 << 1, attacking = 1 << 2 }
 
-public enum eEntityComponent { none = -1, entity, player, enemy, bounce, orbit, spread, sideDash }
+public enum eEntityBrainComponent { none = -1, entity, player, enemy, bounce, orbit, sideDash }
+public enum eEntityMoveComponent { none = -1, entity }
+public enum eEntityCastComponent { none = -1, entity, spread }
+public enum eEntityHealthComponent { none = -1, player, enemy}
 
 public static class GameInfo
 {

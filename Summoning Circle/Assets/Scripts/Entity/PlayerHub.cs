@@ -8,12 +8,7 @@ public class PlayerHub : EntityHub
     // Start is called before the first frame update
     protected override void Start()
     {
-        Faction = eFaction.player;
-
-        Mover = new EntityMover(this);
-        Caster = new EntityProjCaster(this);
-        Brain = new PlayerBrain(this);
-        Health = new PlayerHealth(this);
+        base.Start();
 
         Health.MaxHealth = 6;
         Health.CurrentHealth = 6;

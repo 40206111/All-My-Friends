@@ -11,6 +11,11 @@ public class EntityHub : MonoBehaviour
 
     public Transform Projectile;
 
+    public eEntityMoveComponent MoverType = eEntityMoveComponent.none;
+    public eEntityBrainComponent BrainType = eEntityBrainComponent.none;
+    public eEntityCastComponent CasterType = eEntityCastComponent.none;
+    public eEntityHealthComponent HealthType = eEntityHealthComponent.none;
+
     public EntityMover Mover;
     public EntityProjCaster Caster;
     public EntityBrain Brain;
@@ -27,14 +32,21 @@ public class EntityHub : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        Faction = eFaction.neutral;
+        RunFactory();
+        StartExtras();
+    }
 
-        Mover = new EntityMover(this);
-        Brain = new EntityBrain(this);
-        Caster = new EntityProjCaster(this);
+    protected virtual void RunFactory()
+    {
+        Mover = EntityComponentFactory.GetMover(MoverType, this);
+        Brain = EntityComponentFactory.GetBrain(BrainType, this);
+        Health = EntityComponentFactory.GetHealth(HealthType, this);
+        Caster = EntityComponentFactory.GetCaster(CasterType, this);
+    }
 
-        Caster.Data.TargetFaction = eFaction.player;
-        Caster.Data.SourceFaction = eFaction.enemy;
+    protected virtual void StartExtras()
+    {
+
     }
 
     // Update is called once per frame

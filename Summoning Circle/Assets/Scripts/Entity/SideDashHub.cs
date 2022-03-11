@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class SideDashHub : EnemyHub
 {
-    protected override void Start()
+    protected override void StartExtras()
     {
-        Faction = eFaction.enemy;
-
-        Mover = new EntityMover(this);
-        Brain = new SideDashBrain(this);
-        Health = new EnemyHealth(this);
-
         Mover.Speed = 3f;
 
         Health.MaxHealth = Health.CurrentHealth = Health.MaxHealth / 2;

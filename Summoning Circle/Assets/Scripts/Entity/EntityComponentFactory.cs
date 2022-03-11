@@ -4,24 +4,43 @@ using UnityEngine;
 
 public static class EntityComponentFactory
 {
-    public static EntityBrain GetBrain(eEntityComponent component, EntityHub hub)
+    public static EntityBrain GetBrain(eEntityBrainComponent component, EntityHub hub)
     {
-        switch (component)
+        return component switch
         {
-            case eEntityComponent.entity:
-                return new EntityBrain(hub);
-            case eEntityComponent.player:
-                return new PlayerBrain(hub);
-            case eEntityComponent.enemy:
-                return new EnemyBrain(hub);
-            case eEntityComponent.bounce:
-                return new BounceBrain(hub);
-            case eEntityComponent.orbit:
-                return new OrbitBrain(hub);
-            case eEntityComponent.sideDash:
-                return new SideDashBrain(hub);
-            default:
-                return null;
-        }
+            eEntityBrainComponent.entity => new EntityBrain(hub),
+            eEntityBrainComponent.player => new PlayerBrain(hub),
+            eEntityBrainComponent.enemy => new EnemyBrain(hub),
+            eEntityBrainComponent.bounce => new BounceBrain(hub),
+            eEntityBrainComponent.orbit => new OrbitBrain(hub),
+            eEntityBrainComponent.sideDash => new SideDashBrain(hub),
+            _ => null,
+        };
+    }
+    public static HealthPool GetHealth(eEntityHealthComponent component, EntityHub hub)
+    {
+        return component switch
+        {
+            eEntityHealthComponent.player => new PlayerHealth(hub),
+            eEntityHealthComponent.enemy => new EnemyHealth(hub),
+            _ => null,
+        };
+    }
+    public static EntityMover GetMover(eEntityMoveComponent component, EntityHub hub)
+    {
+        return component switch
+        {
+            eEntityMoveComponent.entity => new EntityMover(hub),
+            _ => null,
+        };
+    }
+    public static EntityProjCaster GetCaster(eEntityCastComponent component, EntityHub hub)
+    {
+        return component switch
+        {
+            eEntityCastComponent.entity => new EntityProjCaster(hub),
+            eEntityCastComponent.spread => new SpreadCast(hub),
+            _ => null,
+        };
     }
 }

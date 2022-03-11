@@ -193,6 +193,10 @@ MonoBehaviour:
   FrozenMovement: 0
   Faction: 2
   Projectile: {fileID: 0}
+  MoverType: 0
+  BrainType: 3
+  CasterType: -1
+  HealthType: -1
 --- !u!50 &5094564856712898165
 Rigidbody2D:
   serializedVersion: 4

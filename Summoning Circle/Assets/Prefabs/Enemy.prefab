@@ -68,8 +68,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FrozenMovement: 0
-  Faction: 0
+  Faction: 4
   Projectile: {fileID: 4805616874329859941, guid: 921a82185e719c041bc05546bacc315c, type: 3}
+  MoverType: 0
+  BrainType: 2
+  CasterType: 0
+  HealthType: 1
 --- !u!70 &6506810673901951321
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

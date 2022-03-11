@@ -47,8 +47,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FrozenMovement: 0
-  Faction: 0
+  Faction: 4
   Projectile: {fileID: 0}
+  MoverType: 0
+  BrainType: 5
+  CasterType: -1
+  HealthType: 1
 --- !u!50 &143634564101958166
 Rigidbody2D:
   serializedVersion: 4

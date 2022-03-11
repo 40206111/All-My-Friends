@@ -6,9 +6,8 @@ public class OrbitHub : EntityHub
 {
     protected override void Start()
     {
-        Mover = new EntityMover(this);
-        Brain = new OrbitBrain(this);
-        PBlocker = new ProjectileBlocker(this, eFaction.enemy | eFaction.neutral);
+        base.Start();
+        PBlocker = new ProjectileBlocker(this, ~Faction);
 
         Mover.Speed *= 4f;
         Mover.Accel *= 4f;
