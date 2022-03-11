@@ -62,7 +62,6 @@ public class BounceBrain : EntityBrain
     public void OnCollisionEnter2D(Collision2D collision)
     {
         CollisionTime = 0f;
-        Debug.Log("Started collision time");
 
         ContactPoint2D[] contacts = new ContactPoint2D[collision.contactCount];
         collision.GetContacts(contacts);

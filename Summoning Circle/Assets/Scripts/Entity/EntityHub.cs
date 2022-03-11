@@ -22,6 +22,8 @@ public class EntityHub : MonoBehaviour
     public Action<Collider2D> OnTriggerEnter;
     public Action<Collider2D> OnTriggerExit;
 
+    public Action<EntityHub> OnDeath;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -51,6 +53,7 @@ public class EntityHub : MonoBehaviour
 
     protected virtual IEnumerator DieCoroutine()
     {
+        OnDeath?.Invoke(this);
         yield return null;
         Destroy(gameObject);
     }
