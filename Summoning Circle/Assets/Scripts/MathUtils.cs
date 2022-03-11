@@ -18,4 +18,7 @@ public static class MathUtils
     public static Vector2 MaxLength(this Vector2 v, float l) => v.sqrMagnitude > l * l ? v.normalized * l : v;
 
     #endregion
+
+    public static void RemoveIfThere(this List<EntityHub> list, EntityHub item)
+    { if (list.Contains(item)) { list.Remove(item); } }
 }
