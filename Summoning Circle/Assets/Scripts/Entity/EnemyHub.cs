@@ -15,7 +15,7 @@ public class EnemyHub : EntityHub
 
         Mover.Speed /= 3f;
 
-        Caster.Data = new ProjectileData(1, 0.5f, 3, 3, Faction, eFaction.player | eFaction.neutral);
+        Caster.Data = new ProjectileData(1, 0.5f, 3, 3, Faction, ~Faction);
     }
 
     protected override void OnCollisionEnter2D(Collision2D collision)

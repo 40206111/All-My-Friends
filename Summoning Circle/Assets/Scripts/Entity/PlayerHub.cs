@@ -18,6 +18,6 @@ public class PlayerHub : EntityHub
         Health.MaxHealth = 6;
         Health.CurrentHealth = 6;
 
-        Caster.Data = new ProjectileData(10, 2, 5, 6, Faction, eFaction.neutral | eFaction.enemy);
+        Caster.Data = new ProjectileData(10, 2, 5, 6, Faction, ~Faction);
     }
 }

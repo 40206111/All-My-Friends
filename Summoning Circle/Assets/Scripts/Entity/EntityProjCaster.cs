@@ -38,9 +38,7 @@ public class EntityProjCaster
 
                 Vector2 castDir = Quaternion.Euler(0, 0, angle * sign) * Vector2.up;
 
-                Projectile p = Object.Instantiate(Hub.Projectile).GetComponent<Projectile>();
-
-                p.Initialise(Hub.transform.position + (Vector3)castDir, castDir.normalized, Data);
+                SpawnProjectile(castDir);
 
                 CastCDRemaining = 1.0f / Data.ShotsPerSecond;
             }
@@ -52,4 +50,10 @@ public class EntityProjCaster
 
     }
 
+    protected void SpawnProjectile(Vector2 dir)
+    {
+        Projectile p = Object.Instantiate(Hub.Projectile).GetComponent<Projectile>();
+
+        p.Initialise(Hub.transform.position + (Vector3)dir, dir.normalized, Data);
+    }
 }
