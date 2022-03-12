@@ -14,6 +14,8 @@ public static class EntityComponentFactory
             eEntityBrainComponent.bounce => new BounceBrain(hub),
             eEntityBrainComponent.orbit => new OrbitBrain(hub),
             eEntityBrainComponent.sideDash => new SideDashBrain(hub),
+            eEntityBrainComponent.follower => new FollowerBrain(hub),
+            eEntityBrainComponent.scareyFol => new ScareyFolBrain(hub),
             _ => null,
         };
     }

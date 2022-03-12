@@ -33,7 +33,7 @@ public abstract class HealthPool
     }
     protected virtual void CallAnimateDamage()
     {
-        Hub.GetComponentInChildren<AnimateDamage>()?.DisplayDamaged(0.2f);
+        Hub.GetComponentInChildren<AnimateEntityEffects>()?.DisplayDamaged(0.2f);
     }
 
     public virtual void HealthUpdate() { }

@@ -21,7 +21,7 @@ public class PlayerHealth : HealthPool
 
     protected override void CallAnimateDamage()
     {
-        Hub.GetComponentInChildren<AnimateDamage>().DisplayDamaged(DamageIFrames);
+        Hub.GetComponentInChildren<AnimateEntityEffects>().DisplayDamaged(DamageIFrames);
     }
 
     public override void HealthUpdate()

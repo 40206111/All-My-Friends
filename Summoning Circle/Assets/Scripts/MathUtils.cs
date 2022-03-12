@@ -21,4 +21,15 @@ public static class MathUtils
 
     public static void RemoveIfThere(this List<EntityHub> list, EntityHub item)
     { if (list.Contains(item)) { list.Remove(item); } }
+    
+    /// <returns>Return true if item was added</returns>
+    public static bool AddIfAbsent<T>(this List<T> list, T item)
+    {
+        if (!list.Contains(item))
+        {
+            list.Add(item);
+            return true;
+        }
+        return false;
+    }
 }

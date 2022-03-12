@@ -5,7 +5,8 @@ using System;
 
 public class EntityHub : MonoBehaviour
 {
-    public ushort FrozenMovement = 0;
+    private ushort _frozen = 0;
+    public ushort FrozenMovement { get { return _frozen; } }
 
     public eFaction Faction;
 
@@ -70,7 +71,28 @@ public class EntityHub : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void AddFreeze()
+    {
+        _frozen++;
+        GetComponentInChildren<AnimateEntityEffects>().DisplayFrozen(this);
+    }
 
+    public void RemoveFreeze()
+    {
+        _frozen--;
+    }
+
+    public void SetFreeze(bool state)
+    {
+        if (state)
+        {
+            AddFreeze();
+        }
+        else
+        {
+            RemoveFreeze();
+        }
+    }
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {

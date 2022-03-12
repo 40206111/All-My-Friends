@@ -24,17 +24,20 @@ public class EntityMover
     // Update is called once per frame
     public void MoveUpdate()
     {
-        if(Hub.FrozenMovement == 0)
+        Vector2 mv = MoveVector;
+        if (Hub.FrozenMovement > 0)
         {
-            Vector2 velChange = MoveVector * Speed - Body.velocity;
-            Vector2 accel = velChange.normalized * Accel;
-            Vector2 addVal = accel * Time.deltaTime;
-            if(addVal.sqrMagnitude > velChange.sqrMagnitude)
-            {
-                addVal = velChange;
-            }
-            Body.velocity += addVal;
+            mv = Vector2.zero;
         }
+        Vector2 velChange = mv * Speed - Body.velocity;
+        Vector2 accel = velChange.normalized * Accel;
+        Vector2 addVal = accel * Time.deltaTime;
+        if (addVal.sqrMagnitude > velChange.sqrMagnitude)
+        {
+            addVal = velChange;
+        }
+        Body.velocity += addVal;
+
     }
 
     public void Knockback(Vector2 knockback)
