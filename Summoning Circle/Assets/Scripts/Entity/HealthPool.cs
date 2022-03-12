@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class HealthPool 
+public abstract class HealthPool
 {
     public EntityHub Hub;
 
@@ -41,5 +41,14 @@ public abstract class HealthPool
     public virtual void Die()
     {
         Hub.Die();
+    }
+
+    public virtual void IncreaseMaxHealth(int increase, bool healIncrease = true)
+    {
+        MaxHealth += increase;
+        if (healIncrease)
+        {
+            Heal(increase);
+        }
     }
 }

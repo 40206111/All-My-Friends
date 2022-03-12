@@ -10,7 +10,10 @@ public class PlayerHealth : HealthPool
 
     public static Action<PlayerHealth> OnHealthUpdate;
 
-    public PlayerHealth(EntityHub hub) : base(hub) { }
+    public PlayerHealth(EntityHub hub) : base(hub)
+    {
+        WaveSpawner.OnBossEnd += MaxHealthAfterBoss; 
+    }
 
     public override void Damage(int val)
     {
@@ -39,5 +42,19 @@ public class PlayerHealth : HealthPool
         {
             IFrameRemaining -= Time.deltaTime;
         }
+    }
+
+    private void MaxHealthAfterBoss()
+    {
+        IncreaseMaxHealth(2);
+    }
+
+    public override void IncreaseMaxHealth(int increase, bool healIncrease = true)
+    {
+        if(MaxHealth == 20)
+        {
+            return;
+        }
+        base.IncreaseMaxHealth(increase, healIncrease);
     }
 }
