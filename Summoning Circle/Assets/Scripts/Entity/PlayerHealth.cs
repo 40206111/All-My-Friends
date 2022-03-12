@@ -53,6 +53,10 @@ public class PlayerHealth : HealthPool
     {
         if(MaxHealth == 20)
         {
+            if (healIncrease)
+            {
+                Heal(increase);
+            }
             return;
         }
         base.IncreaseMaxHealth(increase, healIncrease);
