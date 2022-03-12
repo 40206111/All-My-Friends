@@ -7,6 +7,7 @@ public class EntityProjCaster
     public Vector2 CastDirection = Vector2.zero;
 
     public EntityHub Hub;
+        Collider2D HubCollider;
 
     public float CastCDRemaining = 0.0f;
 
@@ -15,6 +16,7 @@ public class EntityProjCaster
     public EntityProjCaster(EntityHub hub)
     {
         Hub = hub;
+        HubCollider = hub.GetComponent<Collider2D>();
         Data = new ProjectileData(1, 1, 1, 1, eFaction.neutral, eFaction.neutral);
     }
 
@@ -58,5 +60,10 @@ public class EntityProjCaster
         Projectile p = Object.Instantiate(Hub.Projectile).GetComponent<Projectile>();
 
         p.Initialise(Hub.transform.position + (Vector3)dir, dir.normalized, Data);
+
+        if (HubCollider != null)
+        {
+            Physics2D.IgnoreCollision(p.GetComponent<Collider2D>(), HubCollider);
+        }
     }
 }

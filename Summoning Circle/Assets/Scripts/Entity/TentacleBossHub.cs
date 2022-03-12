@@ -9,6 +9,10 @@ public class TentacleBossHub : EntityHub
         base.StartExtras();
 
         Caster.Data = new ProjectileData(3, 2, 20, 4, Faction, eFaction.all);
+
+        int bossHealth = 400;
+        Health.MaxHealth = bossHealth;
+        Health.CurrentHealth = bossHealth;
     }
 
 }
