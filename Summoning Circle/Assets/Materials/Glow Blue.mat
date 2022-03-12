@@ -54,7 +54,7 @@ Material:
     m_Floats:
     - _EnableExternalAlpha: 0
     m_Colors:
-    - Color_58f4d2c22d3d4284835db48638f7f616: {r: 59.017693, g: 0, b: 0, a: 0}
+    - Color_58f4d2c22d3d4284835db48638f7f616: {r: 0.3219879, g: 0.96596366, b: 3.3369653, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
