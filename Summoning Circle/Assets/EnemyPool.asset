@@ -18,4 +18,5 @@ MonoBehaviour:
   TwoThreat:
   - {fileID: 2401065702185302632, guid: 7d0a3a25f5a02c944909347ed8f7b515, type: 3}
   ThreeThreat: []
-  BossThreat: []
+  BossThreat:
+  - {fileID: 6760906481437404640, guid: 9ae83e74fd5e4fa4b92221a8acd19fd1, type: 3}

@@ -13,6 +13,11 @@ public class WaveSpawner : MonoBehaviour
         _instance = this;
     }
 
+    private void OnEnable()
+    {
+        Pedastal.OnItemPickUp += OnPedestalPickup;
+    }
+
     public static Action OnWaveStart;
     public static Action OnPreBoss;
     public static Action OnBossEnd;
@@ -23,6 +28,7 @@ public class WaveSpawner : MonoBehaviour
 
     public List<EntityHub> SpawnedEnemies = new List<EntityHub>();
     public bool CombatRunning = false;
+    bool itemRetrieved = false;
 
     public int CompletedWaves = 0;
     public int CompletedSummons = 0;
@@ -69,8 +75,9 @@ public class WaveSpawner : MonoBehaviour
 
     private IEnumerator RunSummon()
     {
+        itemRetrieved = false;
         CompletedWaves = 0;
-
+        // Spawn waves
         for (int i = 0; i < WavesPerSummon; ++i)
         {
             yield return StartCoroutine(SpawnWave(i / 5f));
@@ -83,15 +90,32 @@ public class WaveSpawner : MonoBehaviour
             }
         }
         OnCompletedSummons?.Invoke();
+        // Finish stragglers
         while (CombatRunning)
         {
             yield return null;
         }
         OnPreBoss?.Invoke();
-        // ~~~ spawn reward
-        // ~~~ spawn boss
+        // Wait for reward retrieval
+        while (!itemRetrieved)
+        {
+            yield return null;
+        }
+        // Fight boss
+        SpawnEnemy(EnemyPool.GetBoss());
+        CombatRunning = true;
+        while (CombatRunning)
+        {
+            yield return null;
+        }
+
         OnBossEnd?.Invoke();
         NextReward = eRoundSigil.none;
+    }
+
+    private void OnPedestalPickup(Item _)
+    {
+        itemRetrieved = true;
     }
 
     private IEnumerator SpawnWave(float difficultyMultiplier)

@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AllItems:
-  - {fileID: 854616919718799474, guid: 5ca38dfb23a832a499cd567a947c524f, type: 3}
-  - {fileID: 854616919718799474, guid: 3ca8ae5cc8a8cf74a9213c033599f83c, type: 3}
+  - {fileID: 1654222349904470177, guid: eff59020411ef62439c97a4a8a1ab91d, type: 3}
+  - {fileID: 8458830354379615517, guid: 89c864f41f165dc439e9046a21b572f6, type: 3}
+  - {fileID: 6426496929213435348, guid: 3e8e1462865169f408be74f659ce89f1, type: 3}
   Goblins: []
+  ChallengeItems: []
