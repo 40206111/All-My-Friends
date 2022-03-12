@@ -12,6 +12,7 @@ public class PlayerHub : EntityHub
 
         Health.MaxHealth = 6;
         Health.CurrentHealth = 6;
+        PlayerHealth.OnHealthUpdate?.Invoke(Health as PlayerHealth);
 
         Caster.Data = new ProjectileData(10, 2, 5, 6, Faction, ~Faction);
     }

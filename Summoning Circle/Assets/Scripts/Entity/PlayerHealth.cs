@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerHealth : HealthPool
 {
     public float DamageIFrames = 0.5f;
     public float IFrameRemaining = 0f;
+
+    public static Action<PlayerHealth> OnHealthUpdate;
 
     public PlayerHealth(EntityHub hub) : base(hub) { }
 
@@ -15,8 +18,14 @@ public class PlayerHealth : HealthPool
         {
             base.Damage(1);
             IFrameRemaining = DamageIFrames;
-
+            OnHealthUpdate?.Invoke(this);
         }
+    }
+
+    public override void Heal(int val)
+    {
+        base.Heal(val);
+        OnHealthUpdate?.Invoke(this);
     }
 
     protected override void CallAnimateDamage()
