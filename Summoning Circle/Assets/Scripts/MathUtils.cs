@@ -17,11 +17,14 @@ public static class MathUtils
 
     public static Vector2 MaxLength(this Vector2 v, float l) => v.sqrMagnitude > l * l ? v.normalized * l : v;
 
+    public static Vector2 Around(this Vector2 v, float radius)
+        => v + Random.Range(0,radius) * Vector2.up.Rotate(Random.Range(0, Tau)); 
+
     #endregion
 
     public static void RemoveIfThere(this List<EntityHub> list, EntityHub item)
     { if (list.Contains(item)) { list.Remove(item); } }
-    
+
     /// <returns>Return true if item was added</returns>
     public static bool AddIfAbsent<T>(this List<T> list, T item)
     {

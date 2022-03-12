@@ -104,13 +104,13 @@ public class WaveSpawner : MonoBehaviour
     {
         if (UnityEngine.Random.Range(0, 3) == 0)
         {
-            Instantiate(HealthPickup, Vector2.down * (2 + UnityEngine.Random.Range(-0.5f, 0.5f)) + Vector2.right * UnityEngine.Random.Range(-0.8f, 0.8f), Quaternion.identity);
+            Instantiate(HealthPickup, (Vector2.down * 2f).Around(0.8f), Quaternion.identity);
         }
     }
 
     private void SpawnEnemy(Transform prefab)
     {
-        EntityHub enemy = Instantiate(prefab, Vector3.zero, Quaternion.identity, transform).GetComponent<EntityHub>();
+        EntityHub enemy = Instantiate(prefab, Vector2.zero.Around(1f), Quaternion.identity, transform).GetComponent<EntityHub>();
         enemy.OnDeath += ReportDeath;
         SpawnedEnemies.Add(enemy);
     }
