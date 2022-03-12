@@ -322,6 +322,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ring_1
       objectReference: {fileID: 0}
+    - target: {fileID: 5423066646352901354, guid: ca568107451171f409f85b236c36c956, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423066646352901354, guid: ca568107451171f409f85b236c36c956, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423066646352901354, guid: ca568107451171f409f85b236c36c956, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1680982789
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423066646352901354, guid: ca568107451171f409f85b236c36c956, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6493760926544357704, guid: ca568107451171f409f85b236c36c956, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -365,6 +381,22 @@ PrefabInstance:
     - target: {fileID: 6493760926544357704, guid: ca568107451171f409f85b236c36c956, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8905250755785734772, guid: ca568107451171f409f85b236c36c956, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8905250755785734772, guid: ca568107451171f409f85b236c36c956, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8905250755785734772, guid: ca568107451171f409f85b236c36c956, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1680982789
+      objectReference: {fileID: 0}
+    - target: {fileID: 8905250755785734772, guid: ca568107451171f409f85b236c36c956, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca568107451171f409f85b236c36c956, type: 3}

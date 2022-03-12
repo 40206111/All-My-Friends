@@ -48,7 +48,7 @@ public class SummoningRing : MonoBehaviour
 
     private void StartSummon()
     {
-        if (Selected != null)
+        if (Selected != null && WaveSpawner.NextReward == eRoundSigil.none)
         {
             WaveSpawner.Instance.StartSummon(Selected.Sigil);
             Destroy(Ring.gameObject);

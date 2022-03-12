@@ -25,12 +25,14 @@ public class WaveSpawner : MonoBehaviour
     public int CompletedWaves = 0;
     public int CompletedSummons = 0;
 
+    public int WavesPerSummon = 5;
+
     public float BaseDifficulty = 5;
     public float CurrentDifficulty;
 
     public Transform HealthPickup;
 
-    private eRoundSigil NextReward = eRoundSigil.none;
+    public static eRoundSigil NextReward = eRoundSigil.none;
 
     // Update is called once per frame
     void Update()
@@ -55,6 +57,10 @@ public class WaveSpawner : MonoBehaviour
 
     public void StartSummon(eRoundSigil sigil)
     {
+        if(NextReward != eRoundSigil.none)
+        {
+            return;
+        }
         NextReward = sigil;
         StartCoroutine(RunSummon());
     }
@@ -63,7 +69,7 @@ public class WaveSpawner : MonoBehaviour
     {
         CompletedWaves = 0;
 
-        for (int i = 0; i < 5; ++i) {
+        for (int i = 0; i < WavesPerSummon; ++i) {
             yield return StartCoroutine(SpawnWave(i / 5f));
             float nextWave = 8.0f;
             while (nextWave > 0 && CombatRunning)
@@ -79,9 +85,9 @@ public class WaveSpawner : MonoBehaviour
         }
         OnPreBoss?.Invoke();
         // ~~~ spawn reward
-        NextReward = eRoundSigil.none;
         // ~~~ spawn boss
         OnBossEnd?.Invoke();
+        NextReward = eRoundSigil.none;
     }
 
     private IEnumerator SpawnWave(float difficultyMultiplier)
