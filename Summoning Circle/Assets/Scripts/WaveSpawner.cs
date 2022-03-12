@@ -18,6 +18,7 @@ public class WaveSpawner : MonoBehaviour
     public static Action OnBossEnd;
 
     public Transform Enemy;
+    public EnemyPool EnemyPool;
 
     public List<EntityHub> SpawnedEnemies = new List<EntityHub>();
     public bool CombatRunning = false;
@@ -57,7 +58,7 @@ public class WaveSpawner : MonoBehaviour
 
     public void StartSummon(eRoundSigil sigil)
     {
-        if(NextReward != eRoundSigil.none)
+        if (NextReward != eRoundSigil.none)
         {
             return;
         }
@@ -69,9 +70,10 @@ public class WaveSpawner : MonoBehaviour
     {
         CompletedWaves = 0;
 
-        for (int i = 0; i < WavesPerSummon; ++i) {
+        for (int i = 0; i < WavesPerSummon; ++i)
+        {
             yield return StartCoroutine(SpawnWave(i / 5f));
-            float nextWave = 8.0f;
+            float nextWave = 15.0f;
             while (nextWave > 0 && CombatRunning)
             {
                 yield return null;
@@ -99,10 +101,18 @@ public class WaveSpawner : MonoBehaviour
         }
         CombatRunning = true;
         CurrentDifficulty = BaseDifficulty + BaseDifficulty * difficultyMultiplier;
-        for (int i = 0; i < CurrentDifficulty; ++i)
+        for (int i = 0; i < CurrentDifficulty;)
         {
-            SpawnEnemy(Enemy);
-            yield return new WaitForSeconds(1.5f);
+            Transform enemy = null;
+            int nextThreat = 0;
+            while (enemy == null)
+            {
+                nextThreat = UnityEngine.Random.Range(1, 4);
+                enemy = EnemyPool.GetEnemy(nextThreat);
+            }
+            SpawnEnemy(enemy);
+            i += nextThreat;
+            yield return new WaitForSeconds(0.5f);
         }
     }
 

@@ -4895,10 +4895,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 3747258192975491688, guid: 883babf610f1a9b47a601b8a74e1005e, type: 3}
+  EnemyPool: {fileID: 11400000, guid: ffcaab10f24be5f4d98b0b43a01e112e, type: 2}
   SpawnedEnemies: []
   CombatRunning: 0
   CompletedWaves: 0
   CompletedSummons: 0
+  WavesPerSummon: 5
   BaseDifficulty: 5
   CurrentDifficulty: 0
   HealthPickup: {fileID: 5217216578702083719, guid: 7240ef87be84be444b915a0c979da15e, type: 3}

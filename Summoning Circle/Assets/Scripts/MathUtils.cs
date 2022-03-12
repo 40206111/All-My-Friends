@@ -35,4 +35,6 @@ public static class MathUtils
         }
         return false;
     }
+
+    public static T RandomItem<T>(this IList<T> list) => list.Count == 0 ? default : list[Random.Range(0, list.Count)];
 }
