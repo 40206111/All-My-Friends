@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Pedastal : MonoBehaviour
@@ -8,6 +7,9 @@ public class Pedastal : MonoBehaviour
     SpriteRenderer ItemSprite;
 
     Item ItemForPlayer;
+
+    public static Action<Item> OnItemPickUp;
+
 
     private void Start()
     {
@@ -40,8 +42,14 @@ public class Pedastal : MonoBehaviour
         PlayerHub player = collision.gameObject.GetComponent<PlayerHub>();
         if( player != null)
         {
+            OnItemPickUp?.Invoke(ItemForPlayer);
             Instantiate(ItemForPlayer);
             gameObject.SetActive(false);
         }
+    }
+
+    private void OnDestroy()
+    {
+        WaveSpawner.OnPreBoss -= SpawnItem;
     }
 }
