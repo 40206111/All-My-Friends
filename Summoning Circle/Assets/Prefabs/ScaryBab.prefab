@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7442375430739885603}
   - component: {fileID: 7442375430739885602}
   - component: {fileID: 2648041347083776452}
+  - component: {fileID: 2771011456064430933}
   m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7442375430739885604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7442375431342686796}
@@ -72,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: -1680982789
   m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0.039215676, g: 0.49019608, b: 0.13744982, a: 1}
+  m_Sprite: {fileID: 8923593030654701160, guid: ba9f301a160676b42a3a59f6de10a0dc, type: 3}
+  m_Color: {r: 0.638, g: 0.638, b: 0.638, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -95,6 +96,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91d23dda8a74d614c8dac08172a919b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2771011456064430933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7442375430739885604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f66562749c870f74c9159ed0daf88a88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Idle: {fileID: 8923593030654701160, guid: ba9f301a160676b42a3a59f6de10a0dc, type: 3}
+  Attack: {fileID: -3804318421065678094, guid: ba9f301a160676b42a3a59f6de10a0dc, type: 3}
+  Hub: {fileID: 0}
 --- !u!1 &7442375431342686799
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,7 +124,7 @@ GameObject:
   - component: {fileID: 7204339457349544636}
   - component: {fileID: 2220979853031870007}
   m_Layer: 8
-  m_Name: FollowBab
+  m_Name: ScaryBab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,7 +217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7719003412306687485
 Transform:
   m_ObjectHideFlags: 0

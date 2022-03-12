@@ -10,7 +10,7 @@ public class ScareyFolBrain : FollowerBrain
         hub.OnTriggerExit += OnTriggerExit;
     }
 
-    eEntityActions Action = eEntityActions.idle;
+    public eEntityActions Action = eEntityActions.idle;
 
     float IdleElapsed = 0f;
     float IdleTime = 5f;

@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7442375431342686796, guid: eff59020411ef62439c97a4a8a1ab91d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.2
       objectReference: {fileID: 0}
     - target: {fileID: 7442375431342686796, guid: eff59020411ef62439c97a4a8a1ab91d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -176,11 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7442375431342686799, guid: eff59020411ef62439c97a4a8a1ab91d, type: 3}
       propertyPath: m_Name
-      value: FollowBab (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7442375431342686799, guid: eff59020411ef62439c97a4a8a1ab91d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      value: ScaryBab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eff59020411ef62439c97a4a8a1ab91d, type: 3}
@@ -9845,10 +9841,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7204339457349544636, guid: eff59020411ef62439c97a4a8a1ab91d, type: 3}
-      propertyPath: BrainType
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 7442375431342686796, guid: eff59020411ef62439c97a4a8a1ab91d, type: 3}
       propertyPath: m_RootOrder
       value: 12
