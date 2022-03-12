@@ -54,6 +54,8 @@ public class SummoningRing : MonoBehaviour
             Destroy(Ring.gameObject);
             Ring = Instantiate(Rings[Random.Range(1, Rings.Count)], transform);
             Ring.localPosition = Vector3.zero;
+            LargeSigil.sprite = null;
+            Selected = null;
             gameObject.SetActive(false);
         }
     }
