@@ -48,7 +48,7 @@ public class TentacleBossBrain : EntityBrain
     eActionState ActionState = eActionState.none;
 
     readonly ActionStateTimes SmashTimes = new ActionStateTimes(1f, 0.5f, 0.5f, 0.2f);
-    readonly ActionStateTimes CastTimes = new ActionStateTimes(1f, 0.5f, 0.2f, 0.2f);
+    readonly ActionStateTimes CastTimes = new ActionStateTimes(1f, 0.5f, 3f, 0.2f);
 
     StateTimer Idle = new StateTimer { Time = 2f };
     StateTimer Smash = new StateTimer { Time = 10f };
@@ -56,11 +56,15 @@ public class TentacleBossBrain : EntityBrain
     StateTimer State = new StateTimer { Time = 0.5f };
 
     Vector2 TargetPos = Vector2.zero;
+
     TentacleSmash Tentacle;
+
+    Animator Anim;
 
     public TentacleBossBrain(EntityHub hub) : base(hub)
     {
         Action = eTBossAction.idle;
+        Anim = hub.GetComponent<Animator>();
         Tentacle = hub.GetComponentInChildren<TentacleSmash>();
     }
 
@@ -82,58 +86,86 @@ public class TentacleBossBrain : EntityBrain
                 Smash.Update(Time.deltaTime);
                 if (Smash.IsFinished && ActionState == eActionState.idle)
                 {
-                    
                     Action = eTBossAction.idle;
                     Smash.Elapsed = 0f;
                 }
-                switch (ActionState)
-                {
-                    case eActionState.idle:
-                        State.Update(Time.deltaTime);
-                        if (State.IsFinished)
-                        {
-                            ActionState = NextState(ActionState);
-                            State.NewTime(CurrTimes().GetTime(ActionState));
-
-                            WindUpStart();
-                        }
-                        break;
-                    case eActionState.windUp:
-                        State.Update(Time.deltaTime);
-                        if (State.IsFinished)
-                        {
-                            ActionState = NextState(ActionState);
-                            State.NewTime(CurrTimes().GetTime(ActionState));
-
-                            InProgressStart();
-                        }
-                        break;
-                    case eActionState.inProgress:
-                        State.Update(Time.deltaTime);
-                        if (State.IsFinished)
-                        {
-                            ActionState = NextState(ActionState);
-                            State.NewTime(CurrTimes().GetTime(ActionState));
-
-                            Tentacle.State = ActionState;
-                        }
-                        break;
-                    case eActionState.windDown:
-                        State.Update(Time.deltaTime);
-                        if (State.IsFinished)
-                        {
-                            ActionState = NextState(ActionState);
-                            State.NewTime(CurrTimes().GetTime(ActionState));
-
-                            Tentacle.State = ActionState;
-                        }
-                        break;
-                }
+                StateSwitchUpdate();
                 break;
             case eTBossAction.cast:
-                Action = eTBossAction.smash;
+                Cast.Update(Time.deltaTime);
+                if (Cast.IsFinished && ActionState == eActionState.idle)
+                {
+                    Action = eTBossAction.idle;
+                    Cast.Elapsed = 0f;
+                }
+                StateSwitchUpdate();
                 break;
         }
+    }
+
+    private void StateSwitchUpdate()
+    {
+        switch (ActionState)
+        {
+            // -- IDLE --
+            case eActionState.idle:
+                State.Update(Time.deltaTime);
+                if (State.IsFinished)
+                {
+                    ActionState = NextState(ActionState);
+                    State.NewTime(CurrTimes().GetTime(ActionState));
+                    GetStateStart(ActionState)?.Invoke();
+                }
+                break;
+            // -- WIND UP --
+            case eActionState.windUp:
+                State.Update(Time.deltaTime);
+                if (State.IsFinished)
+                {
+                    ActionState = NextState(ActionState);
+                    State.NewTime(CurrTimes().GetTime(ActionState));
+                    GetStateStart(ActionState)?.Invoke();
+                }
+                break;
+            // -- IN PROGRESS --
+            case eActionState.inProgress:
+                State.Update(Time.deltaTime);
+                if (Action == eTBossAction.cast)
+                {
+                    TargetPos = PlayerHub.Instance.transform.position;
+                    Hub.Caster.CastDirection = (TargetPos - (Vector2)Hub.transform.position).normalized;
+                }
+                if (State.IsFinished)
+                {
+                    ActionState = NextState(ActionState);
+                    State.NewTime(CurrTimes().GetTime(ActionState));
+                    GetStateStart(ActionState)?.Invoke();
+                }
+                break;
+            // -- WIND DOWN --
+            case eActionState.windDown:
+                State.Update(Time.deltaTime);
+                if (State.IsFinished)
+                {
+                    ActionState = NextState(ActionState);
+                    State.NewTime(CurrTimes().GetTime(ActionState));
+                    GetStateStart(ActionState)?.Invoke();
+                }
+                break;
+        }
+
+    }
+
+    private System.Action GetStateStart(eActionState state)
+    {
+        return state switch
+        {
+            eActionState.idle => IdleStart,
+            eActionState.windUp => WindUpStart,
+            eActionState.inProgress => InProgressStart,
+            eActionState.windDown => WindDownStart,
+            _ => null
+        };
     }
 
 
@@ -146,6 +178,8 @@ public class TentacleBossBrain : EntityBrain
                 Tentacle.NewTarget(TargetPos);
                 break;
             case eTBossAction.cast:
+                Anim.SetTrigger("OpenMouth");
+                Anim.SetBool("WideMouth", false);
                 break;
             default:
                 break;
@@ -158,6 +192,39 @@ public class TentacleBossBrain : EntityBrain
         {
             case eTBossAction.smash:
                 Tentacle.DoAttack();
+                break;
+            case eTBossAction.cast:
+                Anim.SetTrigger("OpenMouth");
+                Anim.SetBool("WideMouth", true);
+                TargetPos = PlayerHub.Instance.transform.position;
+                Hub.Caster.CastDirection = (TargetPos - (Vector2)Hub.transform.position).normalized;
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void WindDownStart()
+    {
+        switch (Action)
+        {
+            case eTBossAction.smash:
+                Tentacle.State = ActionState;
+                break;
+            case eTBossAction.cast:
+                Anim.SetBool("WideMouth", false);
+                Hub.Caster.CastDirection = Vector2.zero;
+                break;
+            default:
+                break;
+        }
+    }
+    private void IdleStart()
+    {
+        switch (Action)
+        {
+            case eTBossAction.smash:
+                Tentacle.State = ActionState;
                 break;
             case eTBossAction.cast:
                 break;
@@ -193,7 +260,8 @@ public class TentacleBossBrain : EntityBrain
             eActionState.idle => eActionState.windUp,
             eActionState.windUp => eActionState.inProgress,
             eActionState.inProgress => eActionState.windDown,
-            eActionState.windDown => eActionState.idle
+            eActionState.windDown => eActionState.idle,
+            _ => eActionState.none
         };
     }
 }

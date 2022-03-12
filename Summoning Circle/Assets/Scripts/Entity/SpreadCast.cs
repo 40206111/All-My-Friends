@@ -15,16 +15,13 @@ public class SpreadCast : EntityProjCaster
     }
 
     // Update is called once per frame
-    public override void CastUpdate()
+    protected override void CalculateProjectile()
     {
-        if (Input.GetMouseButtonDown(4))
+        Vector2 start = CastDirection.Rotate(Width / 2f).normalized;
+        for (int i = 0; i < Count; ++i)
         {
-            Vector2 start = ((Vector2)(Player.transform.position - Hub.transform.position)).normalized.Rotate(Width / 2f).normalized;
-            for (int i = 0; i < Count; ++i)
-            {
-                SpawnProjectile(start);
-                start = start.Rotate(-Width / (Count-1f));
-            }
+            SpawnProjectile(start);
+            start = start.Rotate(-Width / (Count - 1f));
         }
     }
 }

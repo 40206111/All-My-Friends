@@ -28,18 +28,7 @@ public class EntityProjCaster
                 {
                     CastDirection = CastDirection.normalized;
                 }
-
-                float angle = Vector2.Angle(CastDirection, Vector2.up);
-                float sign = Mathf.Sign(Vector2.Dot(CastDirection, Vector2.left));
-
-                angle /= 45f;
-                angle = Mathf.Round(angle);
-                angle *= 45f;
-
-                Vector2 castDir = Quaternion.Euler(0, 0, angle * sign) * Vector2.up;
-
-                SpawnProjectile(castDir);
-
+                CalculateProjectile();
                 CastCDRemaining = 1.0f / Data.ShotsPerSecond;
             }
         }
@@ -48,6 +37,20 @@ public class EntityProjCaster
             CastCDRemaining -= Time.deltaTime;
         }
 
+    }
+
+    protected virtual void CalculateProjectile()
+    {
+        float angle = Vector2.Angle(CastDirection, Vector2.up);
+        float sign = Mathf.Sign(Vector2.Dot(CastDirection, Vector2.left));
+
+        angle /= 45f;
+        angle = Mathf.Round(angle);
+        angle *= 45f;
+
+        Vector2 castDir = Quaternion.Euler(0, 0, angle * sign) * Vector2.up;
+
+        SpawnProjectile(castDir);
     }
 
     protected void SpawnProjectile(Vector2 dir)
