@@ -16,6 +16,7 @@ public class WaveSpawner : MonoBehaviour
     public static Action OnWaveStart;
     public static Action OnPreBoss;
     public static Action OnBossEnd;
+    public static Action OnCompletedSummons;
 
     public Transform Enemy;
     public EnemyPool EnemyPool;
@@ -81,6 +82,7 @@ public class WaveSpawner : MonoBehaviour
 
             }
         }
+        OnCompletedSummons?.Invoke();
         while (CombatRunning)
         {
             yield return null;
