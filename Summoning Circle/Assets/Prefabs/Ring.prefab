@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5965257967242945499}
+  - component: {fileID: 1572111060}
   m_Layer: 0
   m_Name: Ring
   m_TagString: Untagged
@@ -34,6 +35,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1572111060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529113608820658736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3ce533d280a2b34e8d588be265d101c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rings:
+  - {fileID: 6493760926544357704, guid: ca568107451171f409f85b236c36c956, type: 3}
+  - {fileID: 5522884935230736909, guid: e12a9580492ceb0479ad31dbb27747f0, type: 3}
+  - {fileID: 8247623547776501913, guid: 8e283dc3d6060904d97b349a862dd602, type: 3}
+  LargeSigil: {fileID: 9049299837577596616}
+  GoblinSigil:
+    Sigil: 0
+    Small: {fileID: 4595282346505114175, guid: 17fbabc0259c22d46b54f5343eb1d6c6, type: 3}
+    Large: {fileID: -2205157694857922683, guid: 17fbabc0259c22d46b54f5343eb1d6c6, type: 3}
+  ItemSigil:
+    Sigil: 1
+    Small: {fileID: -6275495414023812923, guid: 17fbabc0259c22d46b54f5343eb1d6c6, type: 3}
+    Large: {fileID: 23584326800434632, guid: 17fbabc0259c22d46b54f5343eb1d6c6, type: 3}
+  SkullSigil:
+    Sigil: 2
+    Small: {fileID: 9018304868546886144, guid: 17fbabc0259c22d46b54f5343eb1d6c6, type: 3}
+    Large: {fileID: -7179288559180606696, guid: 17fbabc0259c22d46b54f5343eb1d6c6, type: 3}
+  Ring: {fileID: 6794106512222722709}
 --- !u!1 &2083153485130270556
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,7 +76,7 @@ GameObject:
   - component: {fileID: 2430438997528354587}
   - component: {fileID: 9049299837577596616}
   m_Layer: 0
-  m_Name: goblin
+  m_Name: LargeSigil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,7 +136,7 @@ SpriteRenderer:
   m_SortingLayerID: 1856401999
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2205157694857922683, guid: 17fbabc0259c22d46b54f5343eb1d6c6, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -113,7 +144,7 @@ SpriteRenderer:
   m_Size: {x: 3.5625, y: 2.4166667}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &4045659296051877481
@@ -214,7 +245,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7163697440903667948
 Transform:
   m_ObjectHideFlags: 0
