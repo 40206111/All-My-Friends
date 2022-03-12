@@ -35,4 +35,6 @@ public class Item : MonoBehaviour
 
     public Sprite PedastalIcon;
 
+    public Color Colour = Color.white;
+
 }

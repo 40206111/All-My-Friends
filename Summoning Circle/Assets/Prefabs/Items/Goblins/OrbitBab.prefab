@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 8203125180161463368}
   - component: {fileID: 8846020727547866208}
   - component: {fileID: 1342764389624820939}
+  - component: {fileID: 8458830354379615517}
   m_Layer: 8
   m_Name: OrbitBab
   m_TagString: Untagged
@@ -129,7 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b65cb639cd297d4f9be4eb0a4da939c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FrozenMovement: 0
   Faction: 2
   Projectile: {fileID: 0}
   MoverType: 0
@@ -173,6 +173,25 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.9, y: 0.5}
   m_Direction: 1
+--- !u!114 &8458830354379615517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8846020727547866209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29644e49d1099af4f95c9c9d6c3e8f71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Friend
+  TagLine: The Protector
+  Tags: -1
+  UnlockCriteria: 0
+  ItemPools: 1
+  PedastalIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  Colour: {r: 0.039215688, g: 0.43529415, b: 0.4901961, a: 0}
 --- !u!1 &8846020728016162826
 GameObject:
   m_ObjectHideFlags: 0
