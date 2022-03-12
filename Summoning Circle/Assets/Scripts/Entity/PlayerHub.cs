@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class PlayerHub : EntityHub
 {
+    private static PlayerHub _instance;
+    public static PlayerHub Instance { get { return _instance; } }
+    private void Awake()
+    {
+        _instance = this;
+    }
+
 
     // Start is called before the first frame update
     protected override void Start()

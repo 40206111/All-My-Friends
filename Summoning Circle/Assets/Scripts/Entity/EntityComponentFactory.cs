@@ -16,6 +16,7 @@ public static class EntityComponentFactory
             eEntityBrainComponent.sideDash => new SideDashBrain(hub),
             eEntityBrainComponent.follower => new FollowerBrain(hub),
             eEntityBrainComponent.scareyFol => new ScareyFolBrain(hub),
+            eEntityBrainComponent.tentBoss => new TentacleBossBrain(hub),
             _ => null,
         };
     }
