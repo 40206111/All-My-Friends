@@ -71,6 +71,10 @@ public class WaveSpawner : MonoBehaviour
 
             }
         }
+        while (CombatRunning)
+        {
+            yield return null;
+        }
         OnPreBoss?.Invoke();
         // ~~~ spawn reward
         NextReward = eRoundSigil.none;
