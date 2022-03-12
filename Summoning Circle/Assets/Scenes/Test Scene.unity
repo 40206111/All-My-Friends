@@ -7386,6 +7386,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 461115167898336219, guid: dd1f708b63681144fa13a83972b5dde1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 529113608820658736, guid: dd1f708b63681144fa13a83972b5dde1, type: 3}
       propertyPath: m_Name
       value: Ring
@@ -9421,7 +9425,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1806651609}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 0, z: -10}
+  m_LocalPosition: {x: -2.7643204, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -10074,6 +10078,10 @@ PrefabInstance:
     - target: {fileID: 2142599009022639202, guid: 71adbbc504ed40543a92b10b7b4cf61d, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2142599009022639202, guid: 71adbbc504ed40543a92b10b7b4cf61d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71adbbc504ed40543a92b10b7b4cf61d, type: 3}
