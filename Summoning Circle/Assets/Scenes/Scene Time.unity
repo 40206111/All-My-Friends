@@ -4896,8 +4896,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemy: {fileID: 3747258192975491688, guid: 883babf610f1a9b47a601b8a74e1005e, type: 3}
   SpawnedEnemies: []
-  WaveRunning: 0
+  CombatRunning: 0
   CompletedWaves: 0
+  CompletedSummons: 0
   BaseDifficulty: 5
   CurrentDifficulty: 0
 --- !u!4 &225030857
@@ -5211,6 +5212,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1284962252 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6794106512222722709, guid: dd1f708b63681144fa13a83972b5dde1, type: 3}
+  m_PrefabInstance: {fileID: 1705663201}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1495749036 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 9049299837577596616, guid: dd1f708b63681144fa13a83972b5dde1, type: 3}
+  m_PrefabInstance: {fileID: 1705663201}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1561218172
 GameObject:
   m_ObjectHideFlags: 0
@@ -7192,6 +7203,41 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &1572111059 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 529113608820658736, guid: dd1f708b63681144fa13a83972b5dde1, type: 3}
+  m_PrefabInstance: {fileID: 1705663201}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1572111060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572111059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3ce533d280a2b34e8d588be265d101c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rings:
+  - {fileID: 6493760926544357704, guid: ca568107451171f409f85b236c36c956, type: 3}
+  - {fileID: 5522884935230736909, guid: e12a9580492ceb0479ad31dbb27747f0, type: 3}
+  - {fileID: 8247623547776501913, guid: 8e283dc3d6060904d97b349a862dd602, type: 3}
+  LargeSigil: {fileID: 1495749036}
+  GoblinSigil:
+    Sigil: 0
+    Small: {fileID: 4595282346505114175, guid: 17fbabc0259c22d46b54f5343eb1d6c6, type: 3}
+    Large: {fileID: -2205157694857922683, guid: 17fbabc0259c22d46b54f5343eb1d6c6, type: 3}
+  ItemSigil:
+    Sigil: 1
+    Small: {fileID: -6275495414023812923, guid: 17fbabc0259c22d46b54f5343eb1d6c6, type: 3}
+    Large: {fileID: 23584326800434632, guid: 17fbabc0259c22d46b54f5343eb1d6c6, type: 3}
+  SkullSigil:
+    Sigil: 2
+    Small: {fileID: 9018304868546886144, guid: 17fbabc0259c22d46b54f5343eb1d6c6, type: 3}
+    Large: {fileID: -7179288559180606696, guid: 17fbabc0259c22d46b54f5343eb1d6c6, type: 3}
+  Ring: {fileID: 1284962252}
 --- !u!4 &1658179724 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2142599009022639200, guid: 71adbbc504ed40543a92b10b7b4cf61d, type: 3}
@@ -7215,6 +7261,14 @@ PrefabInstance:
     - target: {fileID: 529113608820658736, guid: dd1f708b63681144fa13a83972b5dde1, type: 3}
       propertyPath: m_Name
       value: Ring
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140387353248741756, guid: dd1f708b63681144fa13a83972b5dde1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2083153485130270556, guid: dd1f708b63681144fa13a83972b5dde1, type: 3}
+      propertyPath: m_Name
+      value: LargeSigil
       objectReference: {fileID: 0}
     - target: {fileID: 5965257967242945499, guid: dd1f708b63681144fa13a83972b5dde1, type: 3}
       propertyPath: m_RootOrder
@@ -7258,6 +7312,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5965257967242945499, guid: dd1f708b63681144fa13a83972b5dde1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6634394031962538909, guid: dd1f708b63681144fa13a83972b5dde1, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
