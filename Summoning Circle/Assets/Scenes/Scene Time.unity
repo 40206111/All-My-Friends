@@ -4901,6 +4901,7 @@ MonoBehaviour:
   CompletedSummons: 0
   BaseDifficulty: 5
   CurrentDifficulty: 0
+  HealthPickup: {fileID: 5217216578702083719, guid: 7240ef87be84be444b915a0c979da15e, type: 3}
 --- !u!4 &225030857
 Transform:
   m_ObjectHideFlags: 0

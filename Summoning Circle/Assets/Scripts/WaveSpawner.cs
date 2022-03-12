@@ -28,6 +28,8 @@ public class WaveSpawner : MonoBehaviour
     public float BaseDifficulty = 5;
     public float CurrentDifficulty;
 
+    public Transform HealthPickup;
+
     private eRoundSigil NextReward = eRoundSigil.none;
 
     // Update is called once per frame
@@ -64,7 +66,7 @@ public class WaveSpawner : MonoBehaviour
         for (int i = 0; i < 5; ++i) {
             yield return StartCoroutine(SpawnWave(i / 5f));
             float nextWave = 8.0f;
-            while(nextWave > 0 && CombatRunning)
+            while (nextWave > 0 && CombatRunning)
             {
                 yield return null;
                 nextWave -= Time.deltaTime;
@@ -85,12 +87,24 @@ public class WaveSpawner : MonoBehaviour
     private IEnumerator SpawnWave(float difficultyMultiplier)
     {
         OnWaveStart?.Invoke();
+        if (difficultyMultiplier > 0)
+        {
+            WaveRewards();
+        }
         CombatRunning = true;
         CurrentDifficulty = BaseDifficulty + BaseDifficulty * difficultyMultiplier;
         for (int i = 0; i < CurrentDifficulty; ++i)
         {
             SpawnEnemy(Enemy);
             yield return new WaitForSeconds(1.5f);
+        }
+    }
+
+    private void WaveRewards()
+    {
+        if (UnityEngine.Random.Range(0, 3) == 0)
+        {
+            Instantiate(HealthPickup, Vector2.down * (2 + UnityEngine.Random.Range(-0.5f, 0.5f)) + Vector2.right * UnityEngine.Random.Range(-0.8f, 0.8f), Quaternion.identity);
         }
     }
 
