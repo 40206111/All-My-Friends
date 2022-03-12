@@ -252,7 +252,7 @@ MonoBehaviour:
   UnlockCriteria: 0
   ItemPools: 1
   PedastalIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  Colour: {r: 0.14509805, g: 0.48235297, b: 0.2392157, a: 0}
+  Colour: {r: 0.14509805, g: 0.48235297, b: 0.2392157, a: 1}
 --- !u!1 &9186544432323092470
 GameObject:
   m_ObjectHideFlags: 0

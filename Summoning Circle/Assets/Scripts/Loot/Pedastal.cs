@@ -31,7 +31,7 @@ public class Pedastal : MonoBehaviour
     {
         ItemForPlayer = AllItemData.Instance.GetItemFromPool(pool);
         ItemSprite.sprite = ItemForPlayer.PedastalIcon;
-        ItemSprite.color = ItemSprite.color;
+        ItemSprite.color = ItemForPlayer.Colour;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
