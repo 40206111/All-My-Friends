@@ -47,7 +47,7 @@ public class TentacleBossBrain : EntityBrain
     eTBossAction Action = eTBossAction.none;
     eActionState ActionState = eActionState.none;
 
-    readonly ActionStateTimes SmashTimes = new ActionStateTimes(1f, 0.5f, 0.5f, 0.2f);
+    readonly ActionStateTimes SmashTimes = new ActionStateTimes(0.1f, 0.5f, 0.5f, 0.2f);
     readonly ActionStateTimes CastTimes = new ActionStateTimes(1f, 0.5f, 3f, 0.2f);
 
     StateTimer Idle = new StateTimer { Time = 2f };

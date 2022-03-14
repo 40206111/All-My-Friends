@@ -6,11 +6,6 @@ using UnityEngine.SceneManagement;
 public class ReloadTest : MonoBehaviour
 {
     bool wereAlive = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -20,7 +15,13 @@ public class ReloadTest : MonoBehaviour
             wereAlive = true;
         }
         if(wereAlive && PlayerHub.Instance == null){
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            StartCoroutine(GoToDeathScene());
         }
+    }
+
+    private IEnumerator GoToDeathScene()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("YouDiedScene");
     }
 }
