@@ -11,11 +11,17 @@ public class WaveSpawner : MonoBehaviour
     private void Awake()
     {
         _instance = this;
+        NextReward = eRoundSigil.none;
     }
 
     private void OnEnable()
     {
         Pedastal.OnItemPickUp += OnPedestalPickup;
+    }
+
+    private void OnDisable()
+    {
+        Pedastal.OnItemPickUp -= OnPedestalPickup;
     }
 
     public static Action OnWaveStart;
@@ -97,10 +103,22 @@ public class WaveSpawner : MonoBehaviour
         }
         OnPreBoss?.Invoke();
         // Wait for reward retrieval
-        while (!itemRetrieved)
+        if (NextReward == eRoundSigil.Item || NextReward == eRoundSigil.Skull)
         {
-            yield return null;
+            for (int i = 0; i < 3; ++i)
+            {
+                Instantiate(HealthPickup, (Vector2.down * 2f).Around(0.8f), Quaternion.identity);
+            }
         }
+        if (NextReward == eRoundSigil.Goblin || NextReward == eRoundSigil.Skull)
+        {
+            while (!itemRetrieved)
+            {
+                yield return null;
+            }
+        }
+
+        yield return new WaitForSeconds(5);
         // Fight boss
         SpawnEnemy(EnemyPool.GetBoss());
         CombatRunning = true;

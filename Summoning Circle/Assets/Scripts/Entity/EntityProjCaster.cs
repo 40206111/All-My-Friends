@@ -7,7 +7,7 @@ public class EntityProjCaster
     public Vector2 CastDirection = Vector2.zero;
 
     public EntityHub Hub;
-        Collider2D HubCollider;
+    Collider2D HubCollider;
 
     public float CastCDRemaining = 0.0f;
 
@@ -19,6 +19,8 @@ public class EntityProjCaster
         HubCollider = hub.GetComponent<Collider2D>();
         Data = new ProjectileData(1, 1, 1, 1, eFaction.neutral, eFaction.neutral);
     }
+
+    public virtual void Destroy() { }
 
     public virtual void CastUpdate()
     {

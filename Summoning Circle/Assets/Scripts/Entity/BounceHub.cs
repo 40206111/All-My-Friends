@@ -5,9 +5,9 @@ using UnityEngine;
 public class BounceHub : EntityHub
 {
 
-    protected override void Start()
+    protected override void StartExtras()
     {
-        base.Start();
+        base.StartExtras();
         PBlocker = new ProjectileBlocker(this, ~Faction);
     }
 }

@@ -37,6 +37,15 @@ public class EntityHub : MonoBehaviour
         StartExtras();
     }
 
+    protected virtual void OnDestroy()
+    {
+        Mover?.Destroy();
+        Caster?.Destroy();
+        Brain?.Destroy();
+        Health?.Destroy();
+        PBlocker?.Destroy();
+    }
+
     protected virtual void RunFactory()
     {
         Mover = EntityComponentFactory.GetMover(MoverType, this);

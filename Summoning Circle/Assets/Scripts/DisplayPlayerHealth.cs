@@ -12,9 +12,13 @@ public class DisplayPlayerHealth : MonoBehaviour
     public Sprite Empty;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         PlayerHealth.OnHealthUpdate += UpdateHealthUI;
+    }
+    void OnDisable()
+    {
+        PlayerHealth.OnHealthUpdate -= UpdateHealthUI;
     }
 
 

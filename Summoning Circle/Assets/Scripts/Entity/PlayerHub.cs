@@ -11,11 +11,16 @@ public class PlayerHub : EntityHub
         _instance = this;
     }
 
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        _instance = null;
+    }
 
     // Start is called before the first frame update
-    protected override void Start()
+    protected override void StartExtras()
     {
-        base.Start();
+        base.StartExtras();
 
         Health.MaxHealth = 6;
         Health.CurrentHealth = 6;

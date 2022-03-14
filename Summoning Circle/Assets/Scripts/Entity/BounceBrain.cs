@@ -21,8 +21,9 @@ public class BounceBrain : EntityBrain
         Hub.OnTriggerExit += OnTriggerExit2D;
     }
 
-    ~BounceBrain()
+    public override void Destroy()
     {
+        base.Destroy();
         Hub.OnCollisionEnter -= OnCollisionEnter2D;
         Hub.OnCollisionExit -= OnCollisionExit2D;
         Hub.OnTriggerEnter -= OnTriggerEnter2D;

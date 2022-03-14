@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SideDashBrain : EntityBrain
 {
-    public static PlayerHub Player;
 
     public eEntityActions Action = eEntityActions.none;
 
@@ -19,12 +18,16 @@ public class SideDashBrain : EntityBrain
 
     public SideDashBrain(EntityHub hub) : base(hub)
     {
-        Player = Object.FindObjectOfType<PlayerHub>();
         Action = eEntityActions.idle;
     }
 
     public override void BrainUpdate()
     {
+        if(PlayerHub.Instance == null)
+        {
+            Action = eEntityActions.idle;
+            IdleElapsed = 0;
+        }
         if (Action == eEntityActions.idle)
         {
             IdleElapsed += Time.deltaTime;
@@ -33,7 +36,7 @@ public class SideDashBrain : EntityBrain
             {
                 Action = eEntityActions.moving;
 
-                Vector2 toTarget = Player.transform.position - Hub.transform.position;
+                Vector2 toTarget = PlayerHub.Instance.transform.position - Hub.transform.position;
                 toTarget = toTarget.normalized;
                 float angle = Random.Range(-MaxAngle, MaxAngle) * Mathf.Deg2Rad;
                 TravelDir = toTarget.Rotate(angle).normalized;

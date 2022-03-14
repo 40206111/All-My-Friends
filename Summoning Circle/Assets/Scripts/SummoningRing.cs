@@ -27,11 +27,24 @@ public class SummoningRing : MonoBehaviour
 
     private void Start()
     {
+        SetCircleSigils();
+    }
+
+    private void OnEnable()
+    {
         SigilCircle.OnPlayerEnter += PlayerSigilEvent;
         StartSummonCircle.OnPlayerEnter += StartSummon;
         WaveSpawner.OnBossEnd += AfterBoss;
+    }
+    private void OnDisable()
+    {
+        SigilCircle.OnPlayerEnter -= PlayerSigilEvent;
+        StartSummonCircle.OnPlayerEnter -= StartSummon;
+    }
 
-        SetCircleSigils();
+    private void OnDestroy()
+    {
+        WaveSpawner.OnBossEnd -= AfterBoss;        
     }
 
     private void AfterBoss()

@@ -14,6 +14,10 @@ public class ProjectileBlocker
 
         hub.OnTriggerEnter += OnTriggerEnter;
     }
+    public virtual void Destroy()
+    {
+        Hub.OnTriggerEnter -= OnTriggerEnter;
+    }
 
     public void OnTriggerEnter(Collider2D collision)
     {

@@ -20,6 +20,7 @@ public class EntityMover
         Hub = hub;
         Body = Hub.GetComponent<Rigidbody2D>();
     }
+    public virtual void Destroy() { }
 
     // Update is called once per frame
     public void MoveUpdate()

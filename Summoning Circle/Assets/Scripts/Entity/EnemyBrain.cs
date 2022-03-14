@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyBrain : EntityBrain
 {
-    public static PlayerHub Player;
     public Vector2 Target = Vector2.zero;
 
     public bool TargetIsPlayer = true;
@@ -16,15 +15,11 @@ public class EnemyBrain : EntityBrain
 
         if (TargetIsPlayer)
         {
-            if (Player == null)
+            if (PlayerHub.Instance == null)
             {
-                Player = Object.FindObjectOfType<PlayerHub>();
-                if (Player == null)
-                {
-                    return;
-                }
+                return;
             }
-            Target = Player.transform.position;
+            Target = PlayerHub.Instance.transform.position;
         }
 
         Vector2 toPlayer = (Target - (Vector2)Hub.transform.position).normalized;

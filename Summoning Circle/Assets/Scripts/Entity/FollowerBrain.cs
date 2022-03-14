@@ -4,21 +4,34 @@ using UnityEngine;
 
 public class FollowerBrain : EntityBrain
 {
-    public static PlayerHub Player;
     public static List<Transform> Conga = new List<Transform>();
+    public static System.Action OnCongaUpdate;
     public int ListPos = -1;
 
     public float MaxDist = 1.0f;
 
     public FollowerBrain(EntityHub hub) : base(hub)
     {
-        if (Player == null)
+        if (PlayerHub.Instance != null)
         {
-            Player = Object.FindObjectOfType<PlayerHub>();
-            Conga.Add(Player.transform);
+            Conga.Add(PlayerHub.Instance.transform);
         }
         ListPos = Conga.Count;
         Conga.Add(hub.transform);
+        OnCongaUpdate += CongaUpdate;
+    }
+
+    public override void Destroy()
+    {
+        base.Destroy();
+        Conga.Remove(Hub.transform);
+        OnCongaUpdate -= CongaUpdate;
+        OnCongaUpdate?.Invoke();
+    }
+
+    protected virtual void CongaUpdate()
+    {
+        ListPos = Conga.FindIndex(x => x == Hub.transform);
     }
 
     public override void BrainUpdate()

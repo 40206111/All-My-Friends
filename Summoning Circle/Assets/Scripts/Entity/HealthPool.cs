@@ -13,6 +13,7 @@ public abstract class HealthPool
     {
         Hub = hub;
     }
+    public virtual void Destroy() { }
 
     public virtual void Damage(int val)
     {

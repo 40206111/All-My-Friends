@@ -45,4 +45,9 @@ public class SigilCircle : MonoBehaviour
             OnPlayerEnter?.Invoke(this);
         }
     }
+
+    private void OnDestroy()
+    {
+        OnPlayerEnter = null;
+    }
 }

@@ -10,6 +10,13 @@ public class ScareyFolBrain : FollowerBrain
         hub.OnTriggerExit += OnTriggerExit;
     }
 
+    public override void Destroy()
+    {
+        base.Destroy();
+        Hub.OnTriggerEnter -= OnTriggerEnter;
+        Hub.OnTriggerExit -= OnTriggerExit;
+    }
+
     public eEntityActions Action = eEntityActions.idle;
 
     float IdleElapsed = 0f;

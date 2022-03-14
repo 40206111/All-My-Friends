@@ -10,6 +10,7 @@ public class EntityBrain
     {
         Hub = hub;
     }
+    public virtual void Destroy() { }
 
     public virtual void BrainUpdate()
     {

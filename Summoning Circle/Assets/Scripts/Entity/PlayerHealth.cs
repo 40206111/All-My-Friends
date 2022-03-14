@@ -15,6 +15,11 @@ public class PlayerHealth : HealthPool
         WaveSpawner.OnBossEnd += MaxHealthAfterBoss; 
     }
 
+    public override void Destroy()
+    {
+        WaveSpawner.OnBossEnd -= MaxHealthAfterBoss;
+    }
+
     public override void Damage(int val)
     {
         if (IFrameRemaining <= 0f)

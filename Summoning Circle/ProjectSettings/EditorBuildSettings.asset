@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PetsStep.unity
     guid: c80e9453cce990047a9a52e513815167
+  - enabled: 1
+    path: Assets/Scenes/GameplayScene.unity
+    guid: 540ce58b9e2ede44286bd11c4b7e8664
   m_configObjects: {}

@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class SpreadCast : EntityProjCaster
 {
-    public PlayerHub Player;
-
     public float Count = 5;
     public float Width = MathUtils.Tau / 6f;
 
-    public SpreadCast(EntityHub hub) : base(hub)
-    {
-        Player = Object.FindObjectOfType<PlayerHub>();
-    }
+    public SpreadCast(EntityHub hub) : base(hub) { }
 
     // Update is called once per frame
     protected override void CalculateProjectile()
